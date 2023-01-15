@@ -1,15 +1,29 @@
 % Document information
-\newcommand{\titleinfo}{Zusammenfassung Template}
-\newcommand{\authorinfo}{Name Nachname}
+\newcommand{\titleinfo}{Zusammenfassung Statistical Machine Learning}
+\newcommand{\authorinfo}{Sandro Pedrett}
 \newcommand{\version}{1.0}
-\newcommand{\versioninfo}{FS21}
+\newcommand{\versioninfo}{HS22}
 % Header
 \include{Template/Header}
 
+% externe verweise
+\newcommand{\script}[1]{\verweisextern{Buch}{#1}}
+
 % Document
 \begin{document}
-
 \tableofcontents
-\input{Sections/First Section}
+\pagebreak
+
+\input{Sections/Introduction}
+\input{Sections/LinearRegression}
+\input{Sections/Klassifizierung}
+\input{Sections/Resampling}
+\input{Sections/Regularization}
+\input{Sections/TreeBased}
+\input{Sections/SVM}
+\input{Sections/Unsupervised}
+\cleardoublepage
+\input{Sections/Idiotenseite}
+
 
 \end{document}

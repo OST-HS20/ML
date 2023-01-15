@@ -1,0 +1,49 @@
+\section{Linear Regression}\script{59}
+Die einfachste lineare Regerssion ist
+\[
+\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x
+\]
+
+Der i-th Residual ist gegeben durch die Differenz von Orignal und der Vorhersage $e_i = y_i - \hat{y}_i$. Damit kann der Residual Sum Squared und der Residual Standard Error berechnet werden:
+\begin{align*}
+	RSS &= \sum( y_i - \hat{y}_i)^2 = \sum e_i^2\\
+	TSS &= \sum(y_i - \overline{y})^2 \\
+	RSE &= \sqrt{\frac{RSS}{n-2}}
+\end{align*}
+
+Mittels dem Least Square Verfahren können die Optimalen $\hat{\beta}_i$ bestimmt werden.
+\begin{align*}
+	\hat{\beta}_1 &= \frac{\sum_{i=1}^{n}(x_i - \overline{x})(y_i - \overline{y})}{\sum_{i=1}^{n}(x_i - \overline{x})^2} \\
+	\hat{\beta}_0 &= \overline{y} - \hat{\beta}_1\overline{x}
+\end{align*}
+Wobei $\overline{x}, \overline{y} = \frac{1}{n}\sum_{i=1}^{n}x,y_i$ dem Durchschnitt entspricht. 
+
+
+\subsection{t-Statistik}
+Mit der t-Statistik kann die lineare Abhängigkeit von $X$ zu $Y$ berechnet werden \script{67}. Damit kann der p-wert durch Integration berechnet werden. Damit kann eine Aussage über das Verwerfen der Null-Hypothese gezogen werden. Siehe Skript für $SE$.
+\[
+t = \frac{\hat{\beta}_1 - 0}{SE(\beta_1)}
+\]
+
+\subsection{$R^2$ Statistik}
+\[
+R^2 = \frac{RSS - RSS}{RSS} = 1 - \frac{TSS}{RSS}
+\]
+Wobei $TSS = \sum(y_i - \overline{y})^2$. Der $R^2 \in [0..1]$. Je näher bei $1$, desto besser die Regression. \script{69}
+
+
+\textbf{Hinweis}: Für simple Lineare Regression $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x$ entspricht der Correlation von X,Y dem $R^2 = Cor(X, Y)^2 = Cor(Y, X)^2$.
+
+\subsection{F-Statistik}\script{75}
+Für multidimensionale Auswertung, wie gut eine Dimension (Feature) für das Vorhersagen von Y geeignet ist, kann die F-Statistik berechnet werden. Wenn dieser grössere als $1$ ist, dann funktioniert das Modell besser.
+\[
+F = \frac{(TSS - RSS)/p}{RSS/(n - p - 1)}
+\]
+
+Wobei, $p$ der Anzahl von Dimensionen (Features) und $n$ die Anzahl an trainigsdaten entspricht.
+
+\subsection{Collinearity}\script{99}
+Der Variance inflation Faktor (VIF) sagt aus, wie ein Feature vom anderen abhängig ist (Lineare Abhängikeit), was keine neuen Informationen in das Modell bringt. Je grössere, desto eher ist ein Feature vom anderen Abhängig, was Probleme beim Voraussagen macht.
+\[
+VIF(\hat{\beta}_j) = \frac{1}{1 - R^2_{X_j|X_{-j}}}
+\]
